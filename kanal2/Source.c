@@ -41,8 +41,13 @@ int main()
 
 			char message[SIZE_BUFFER];
 			printf("введите сообщение для сервера:\n");
+			gets(message);
+			LPWSTR buffer = &message; // строковая переменая, значение которой записывается в канал
+			WriteFile(hNamePipe, buffer, size_buffer, &actual_written, NULL);
 
 		}
+		Sleep(5000);
+		CloseHandle(hNamePipe);
 	}
 
 
